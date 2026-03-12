@@ -11,7 +11,7 @@ updated_at='last_modified_date'
 }}
  
 SELECT *
-FROM {{ ref('bronze_customer') }}
+FROM {{ ref('bronze_customer') }} 
  
 QUALIFY ROW_NUMBER() OVER(
 PARTITION BY customer_id
