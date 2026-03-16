@@ -16,8 +16,7 @@ TRIM(manager_id) AS manager_id,
 INITCAP(TRIM(store_name)) AS store_name,
 INITCAP(TRIM(store_type)) AS store_type,
 UPPER(TRIM(region)) AS region,
- 
---email validation
+
 LOWER(TRIM(email)) AS email,
  
 CASE
@@ -25,9 +24,7 @@ CASE
     THEN LOWER(TRIM(email))
     ELSE NULL
 END AS valid_email,
- 
---PHone number validation
- 
+
 REGEXP_REPLACE(phone_number,'[^0-9]','') AS phone_number,
  
 CASE
@@ -53,8 +50,6 @@ COALESCE(TRY_TO_NUMBER(monthly_rent),0) AS monthly_rent,
  
 TRY_TO_BOOLEAN(is_active) AS is_active,
  
---Store category
- 
 CASE
     WHEN TRY_TO_NUMBER(size_sq_ft) < 5000 THEN 'Small'
     WHEN TRY_TO_NUMBER(size_sq_ft) BETWEEN 5000 AND 10000 THEN 'Medium'
@@ -64,15 +59,12 @@ END AS store_size_category,
  
 TRY_TO_DATE(opening_date) AS opening_date,
 last_modified_date::DATE AS last_modified_date,
- 
---Store age
+
 CASE
     WHEN TRY_TO_DATE(opening_date) IS NOT NULL
     THEN DATEDIFF(year, TRY_TO_DATE(opening_date), CURRENT_DATE)
     ELSE NULL
 END AS store_age_years,
- 
---Calculating store performance metrics
  
 CASE
     WHEN TRY_TO_NUMBER(sales_target) > 0
@@ -94,7 +86,6 @@ CASE
     ELSE NULL
 END AS employee_efficiency,
  
---Flagging Performance
  
 CASE
     WHEN TRY_TO_NUMBER(sales_target) > 0
@@ -102,19 +93,12 @@ CASE
     THEN 'Underperforming'
     ELSE 'Normal'
 END AS performance_flag,
- 
---Hours
- 
+
 INITCAP(TRIM(weekday_hours)) AS weekday_hours,
 INITCAP(TRIM(weekend_hours)) AS weekend_hours,
 INITCAP(TRIM(holiday_hours)) AS holiday_hours,
  
- --Services
- 
 INITCAP(TRIM(services)) AS services,
- 
- 
---Address cleaning
  
 INITCAP(TRIM(street)) AS street,
 INITCAP(TRIM(city)) AS city,

@@ -14,3 +14,4 @@ ON f.campaignkey = c.campaignkey
 GROUP BY c.campaignname
  
 ORDER BY total_sales_generated DESC
+
