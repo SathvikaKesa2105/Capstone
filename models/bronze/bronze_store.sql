@@ -19,20 +19,17 @@ SELECT
  
     s.value:opening_date::STRING       AS opening_date,
     s.value:last_modified_date::STRING AS last_modified_date,
- 
-    -- address
+
     s.value:address.city::STRING       AS city,
     s.value:address.state::STRING      AS state,
     s.value:address.country::STRING    AS country,
     s.value:address.street::STRING     AS street,
     s.value:address.zip_code::STRING   AS zip_code,
  
-    -- operating hours
     s.value:operating_hours.weekdays::STRING AS weekday_hours,
     s.value:operating_hours.weekends::STRING AS weekend_hours,
     s.value:operating_hours.holidays::STRING AS holiday_hours,
  
-    -- services array
     ARRAY_TO_STRING(s.value:services, ', ') AS services
  
 FROM {{ source('bronze','ext_store_data') }} AS src,
