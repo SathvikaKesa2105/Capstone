@@ -16,13 +16,9 @@ sales AS (
  
 SELECT
  
-/* Surrogate Key */
-ROW_NUMBER() OVER (ORDER BY oi.order_id) AS saleskey,
- 
-/* Business Key */
+{{ dbt_utils.generate_surrogate_key(['oi.order_id','oi.product_id']) }} AS saleskey,
+
 oi.order_id,
- 
-/* Dimension Keys */
  
 c.customerkey,
 p.productkey,
@@ -31,7 +27,7 @@ d.datekey,
 e.employeekey,
 mc.campaignkey,
  
-/* Measures */
+
  
 oi.quantity AS quantity_sold,
  
@@ -65,7 +61,7 @@ WHEN LOWER(o.order_source) LIKE '%online%' THEN 'Online'
 ELSE 'In-Store'
 END AS sales_channel,
  
-/* Customer Segment */
+
  
 c.customer_segment AS customer_segment_impact
  

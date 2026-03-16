@@ -18,23 +18,23 @@ SELECT
     s.value:payment_terms::STRING             AS payment_terms,
     s.value:preferred_carrier::STRING         AS preferred_carrier,
  
-    -- categories array
+
     ARRAY_TO_STRING(s.value:categories_supplied, ', ') AS categories_supplied,
  
-    -- contact information
+
     s.value:contact_information.address::STRING        AS address,
     s.value:contact_information.contact_person::STRING AS contact_person,
     s.value:contact_information.email::STRING          AS contact_email,
     s.value:contact_information.phone::STRING          AS contact_phone,
  
-    -- contract details
+
     s.value:contract_details.contract_id::STRING       AS contract_id,
     s.value:contract_details.start_date::STRING        AS contract_start_date,
     s.value:contract_details.end_date::STRING          AS contract_end_date,
     s.value:contract_details.exclusivity::STRING       AS exclusivity,
     s.value:contract_details.renewal_option::STRING    AS renewal_option,
  
-    -- performance metrics
+
     s.value:performance_metrics.average_delay_days::STRING    AS average_delay_days,
     s.value:performance_metrics.defect_rate::STRING           AS defect_rate,
     s.value:performance_metrics.on_time_delivery_rate::STRING AS on_time_delivery_rate,

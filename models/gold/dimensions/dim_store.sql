@@ -1,7 +1,7 @@
 SELECT
  
 
-ROW_NUMBER() OVER (ORDER BY store_id, dbt_valid_from) AS StoreKey, 
+{{ dbt_utils.generate_surrogate_key(['store_id','dbt_valid_from']) }}  AS StoreKey, 
 
 store_id,
 store_name,
