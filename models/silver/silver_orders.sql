@@ -18,8 +18,10 @@ SELECT DISTINCT
     TRY_TO_NUMBER(tax_amount) AS tax_amount,
     TRY_TO_NUMBER(shipping_cost) AS shipping_cost,
     TRY_TO_NUMBER(total_amount) AS total_amount,
-
+                                                                
     quantity * unit_price AS item_total_amount,
     quantity * cost_price AS item_cost
- 
+    
+
+
 FROM {{ ref('bronze_orders') }}
