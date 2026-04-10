@@ -1,6 +1,6 @@
 SELECT
 
-{{dbt_utils.generate_surrogate_key(['product_id']) }} AS productkey,
+{{dbt_utils.generate_surrogate_key(['product_id','dbt_valid_from']) }} AS productkey,
 product_id,
 
 product_name,

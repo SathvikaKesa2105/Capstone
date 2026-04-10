@@ -1,14 +1,14 @@
 WITH order_items AS (
  
 SELECT *
-FROM {{ ref('silver_orders_items') }}
+FROM {{ ref('silver_orders') }}
  
 ),
  
 orders AS (
  
 SELECT *
-FROM {{ ref('silver_orders') }}
+FROM {{ ref('intermediate_orderagg') }}
  
 ),
  

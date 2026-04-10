@@ -1,6 +1,6 @@
 
 SELECT
-    {{ dbt_utils.generate_surrogate_key(['campaign_id']) }} AS campaignkey,
+    {{ dbt_utils.generate_surrogate_key(['campaign_id','dbt_valid_from']) }} AS campaignkey,
     campaign_id AS campaignid,
     campaign_type AS campaigntype,
     campaign_name AS campaignname,
