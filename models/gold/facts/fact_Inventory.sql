@@ -12,9 +12,9 @@ SELECT
     product.cost_price,
     product.supplier_id
  
-FROM {{ ref('silver_orders') }} o
+FROM {{ ref('intermediate_orderagg') }} o
  
-INNER JOIN {{ ref('silver_orders_items') }} oi
+INNER JOIN {{ ref('silver_orders') }} oi
     ON o.order_id = oi.order_id
  
 INNER JOIN {{ ref('dim_product') }} product

@@ -47,3 +47,8 @@ models:
     gold:
       +schema: Gold
       +materialized: table
+      reporting:
+        +materialized: view
+    intermediate:
+      +schema: intermediate
+      +materialized: table

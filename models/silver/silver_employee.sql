@@ -79,7 +79,7 @@ employee_sales AS (
         employee_id,
         COUNT(order_id) AS orders_processed,
         SUM(total_amount) AS total_sales_amount
-    FROM {{ ref('silver_orders') }}
+    FROM {{ ref('intermediate_orderagg') }}
     GROUP BY employee_id
 ),
  
