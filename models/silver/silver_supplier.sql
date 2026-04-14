@@ -52,17 +52,14 @@ cleaned_birthdate AS (
         REGEXP_REPLACE(contact_phone,'[^0-9]','') AS phone_number,
  
         CASE
-            -- 11-digit number starting with 1 → strip leading 1
             WHEN LENGTH(REGEXP_REPLACE(contact_phone,'[^0-9]','')) = 11
                  AND LEFT(REGEXP_REPLACE(contact_phone,'[^0-9]',''),1) = '1'
             THEN SUBSTRING(REGEXP_REPLACE(contact_phone,'[^0-9]',''),2)
- 
-            -- 10-digit number starting with 1 → invalid
+
             WHEN LENGTH(REGEXP_REPLACE(contact_phone,'[^0-9]','')) = 10
                  AND LEFT(REGEXP_REPLACE(contact_phone,'[^0-9]',''),1) = '1'
             THEN NULL
- 
-            -- 10-digit number → keep as-is
+
             WHEN LENGTH(REGEXP_REPLACE(contact_phone,'[^0-9]','')) = 10
             THEN REGEXP_REPLACE(contact_phone,'[^0-9]','')
  

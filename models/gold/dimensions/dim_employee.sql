@@ -22,8 +22,5 @@ sales_target AS Sales_Target,
 orders_processed AS Orders_Processed,
 total_sales_amount AS Total_Sales,
 target_achievement_percentage AS Taget_Achievement_Percentage
- 
 
-
- 
 FROM {{ ref('silver_employee') }}

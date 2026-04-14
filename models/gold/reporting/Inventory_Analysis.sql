@@ -4,10 +4,9 @@ SELECT
 
     p.product_name,
 
-    -- Inventory Value
+
     SUM(f.inventoryvalue) AS total_inventory_value,
 
-    -- Turnover Metrics
     AVG(f.stockturnoverratio) AS turnover_ratio,
 
     CASE
@@ -16,7 +15,6 @@ SELECT
         ELSE 'Slow Moving'
     END AS product_movement,
 
-    -- Duplicate metric from View 3 (kept for compatibility)
     AVG(f.stockturnoverratio) AS avg_stock_turnover
 
 FROM {{ ref('fact_Inventory') }} f
