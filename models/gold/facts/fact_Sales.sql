@@ -41,7 +41,7 @@ oi.discount_amount,
  
 o.shipping_cost,
  
-/* Profit */
+
  
 (
 oi.item_total_amount
@@ -49,12 +49,10 @@ oi.item_total_amount
 - oi.discount_amount
 - o.shipping_cost
 ) AS profit_amount,
- 
-/* Region */
+
  
 s.region,
- 
-/* Sales Channel */
+
  
 CASE
 WHEN LOWER(o.order_source) LIKE '%online%' THEN 'Online'
